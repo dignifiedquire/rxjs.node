@@ -1,0 +1,45 @@
+{
+  "name": "rxjs.node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "jsnext:main": "src/index.js",
+  "scripts": {
+    "lint": "aegir-lint",
+    "build": "aegir-build",
+    "test": "aegir-test",
+    "test:node": "aegir-test --env node",
+    "test:browser": "aegir-test --env browser",
+    "release": "aegir-release",
+    "release-minor": "aegir-release --type minor",
+    "release-major": "aegir-release --type major",
+    "coverage": "aegir-coverage",
+    "coverage-publish": "aegir-coverage publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dignifiedquire/rxjs.node.git"
+  },
+  "keywords": [
+    "rx",
+    "frp",
+    "rxjs",
+    "node",
+    "node.js",
+    "stream",
+    "streams"
+  ],
+  "author": "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dignifiedquire/rxjs.node/issues"
+  },
+  "homepage": "https://github.com/dignifiedquire/rxjs.node#readme",
+  "devDependencies": {
+    "aegir": "^4.0.0",
+    "chai": "^3.5.0"
+  },
+  "dependencies": {
+    "rxjs": "^5.0.0-beta.10"
+  }
+}
