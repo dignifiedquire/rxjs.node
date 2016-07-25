@@ -9,3 +9,10 @@
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
 
 > Tooling to adapt node.js core functionality into RxJS
+
+
+## API
+
+### `fromStream(stream)`
+
+Takes in a node-stream and returns a `Subject`.
