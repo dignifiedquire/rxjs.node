@@ -16,3 +16,12 @@
 ### `fromStream(stream)`
 
 Takes in a node-stream and returns a `Subject`.
+
+
+## Acknowledgements
+
+Thank you to all the contributors on these projects for going before me.
+
+- https://github.com/Reactive-Extensions/rx-node
+- https://github.com/HackerHappyHour/rxjs-node
+- https://github.com/Reactive-Extensions/RxJS
