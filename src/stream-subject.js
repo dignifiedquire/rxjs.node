@@ -3,20 +3,19 @@
 const Rx = require('rxjs/Rx')
 
 const Subject = Rx.Subject
+const AnonymousSubject = require('rxjs/Subject').AnonymousSubject
 const Subscriber = Rx.Subscriber
 const Subscription = Rx.Subscription
 const ReplaySubject = Rx.ReplaySubject
 const Observable = Rx.Observable
 
-module.exports = class StreamSubject extends Subject {
+module.exports = class StreamSubject extends AnonymousSubject {
   constructor (optionsOrSource, destination) {
     if (destination instanceof Observable) {
       super(destination, optionsOrSource)
     } else {
       super()
       this._output = new Subject()
-      this.stream = null
-      this.observers = []
 
       Object.assign(this, optionsOrSource)
 
@@ -76,10 +75,7 @@ module.exports = class StreamSubject extends Subject {
     const queue = this.destination
 
     this.destination = Subscriber.create(
-      (x) => {
-        console.log('trying to write', x, this.stream.writable)
-        this.stream.writable && this.stream.write(x)
-      },
+      (x) => this.stream.writable && this.stream.write(x),
       ender,
       ender
     )
