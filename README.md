@@ -17,6 +17,13 @@
 
 Takes in a node-stream and returns a `Subject`.
 
+### `toCallback(observable, cb)`
+
+Convert an observable into a node-style callback.
+
+### `toPromise(observable)`
+
+Convert an observable into a promise. (Requires global `Promise`)
 
 ## Acknowledgements
 
