@@ -25,6 +25,10 @@ Convert an observable into a node-style callback.
 
 Convert an observable into a promise. (Requires global `Promise`)
 
+### `SocketSubject(options)`
+
+### `StreamSubject(options)`
+
 ## Acknowledgements
 
 Thank you to all the contributors on these projects for going before me.

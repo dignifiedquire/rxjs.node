@@ -58,30 +58,38 @@ module.exports = class StreamSubject extends AnonymousSubject {
 
     const observer = this._output
 
-    if (this.openObserver) {
-      this.openObserver.next(this.stream)
-    }
-
-    const ender = () => {
-      if (this.closingObserver) {
-        this.closingObserver.next(undefined)
+    const createSubscription = () => {
+      if (this.openObserver) {
+        this.openObserver.next(this.stream)
       }
 
-      this.stream.destroy && this.stream.destroy()
-      this.destination = new ReplaySubject()
-      this.stream = null
+      const ender = () => {
+        if (this.closingObserver) {
+          this.closingObserver.next(undefined)
+        }
+
+        this.stream.destroy && this.stream.destroy()
+        this.destination = new ReplaySubject()
+        this.stream = null
+      }
+
+      const queue = this.destination
+
+      this.destination = Subscriber.create(
+        (x) => this.stream.writable && this.stream.write(x),
+        ender,
+        ender
+      )
+
+      if (queue && queue instanceof ReplaySubject) {
+        subscription.add(queue.subscribe(this.destination))
+      }
     }
 
-    const queue = this.destination
-
-    this.destination = Subscriber.create(
-      (x) => this.stream.writable && this.stream.write(x),
-      ender,
-      ender
-    )
-
-    if (queue && queue instanceof ReplaySubject) {
-      subscription.add(queue.subscribe(this.destination))
+    if (this.openEvent) {
+      stream.on(this.openEvent, createSubscription)
+    } else {
+      createSubscription()
     }
 
     stream.on('error', (err) => observer.error(err))
