@@ -41,5 +41,8 @@
   },
   "dependencies": {
     "rxjs": "^5.0.0-beta.10"
-  }
+  },
+  "contributors": [
+    "dignifiedquire <dignifiedquire@gmail.com>"
+  ]
 }
