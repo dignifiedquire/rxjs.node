@@ -1,7 +1,7 @@
 {
   "name": "rxjs.node",
   "version": "0.2.0",
-  "description": "",
+  "description": "Tooling to adapt Node.js core functionality into RxJS",
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
   "scripts": {
